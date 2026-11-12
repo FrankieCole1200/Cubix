@@ -1,0 +1,2 @@
+# Cubix
+A speedcube timer

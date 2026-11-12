@@ -2,17 +2,19 @@
 
 import { useState, useRef, useEffect } from "react";
 
-type TimerState = "IDLE" | "HOLDING" | "READY" | "RUNNING";
+type TimerState = "IDLE" | "HOLDING" | "READY" | "RUNNING" | "STOPPED";
 
 const HOLD_DURATION_MS = 500;
 
-export function useTimer() {
+export function useTimer(saveTime: (time: number) => void) {
     const [timerState, setTimerState] = useState<TimerState>("IDLE");
     const [elapsedTime, setElapsedTime] = useState(0);
 
     const startTime = useRef(0);
     const holdTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     const stateRef = useRef<TimerState>("IDLE");
+    const saveTimeRef = useRef(saveTime);
+    saveTimeRef.current = saveTime;
     const pressedKeys = useRef(new Set<string>());
 
     useEffect(() => {
@@ -60,11 +62,13 @@ export function useTimer() {
             if (stateRef.current === "RUNNING") {
                 const finalTime = performance.now() - startTime.current;
                 setElapsedTime(finalTime);
-                changeState("IDLE");
+                changeState("STOPPED");
+                saveTimeRef.current(finalTime);
+
                 return;
             }
 
-            if (event.code !== "Space" || stateRef.current !== "IDLE") {
+            if (event.code !== "Space" || (stateRef.current !== "IDLE" && stateRef.current !== "STOPPED")) {
                 return;
             }
 

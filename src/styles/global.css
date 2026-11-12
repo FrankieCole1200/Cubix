@@ -1,0 +1,21 @@
+/* Global styles applied throughout Cubix, including CSS resets,
+   default fonts, and base element styling. */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+}

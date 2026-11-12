@@ -1,0 +1,37 @@
+/* Component-specific styles for the Cubix timer, including
+   the time display, buttons, and timer layout. */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.time {
+    font-size: 3rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+}
+
+.instruction {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.idle {
+  color: var(--text-primary);
+}
+
+.holding {
+  color: #ef4444;
+}
+
+.ready {
+  color: #22c55e;
+}
+
+.running {
+  color: var(--text-primary);
+}

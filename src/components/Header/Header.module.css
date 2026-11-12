@@ -1,0 +1,38 @@
+
+/* Styles the shared Cubix header, including the logo,
+   navigation links, and positioning at the top of the screen. */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-shrink: 0;
+  width: 100%;
+  padding: 16px 32px;
+
+  background-color: var(--surface);
+  border-bottom: 1px solid #334155;
+}
+
+.logo {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
